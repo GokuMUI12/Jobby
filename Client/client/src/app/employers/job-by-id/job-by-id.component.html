@@ -1,0 +1,63 @@
+<!-- Header Container
+================================================== -->
+<div class="container">
+	<div class="row">
+		
+		<!-- Content -->
+		<div class="col-xl-8 col-lg-8 content-right-offset">
+			<div class="single-page-section">
+				<h3 class="margin-bottom-25">Job Category</h3>
+				<p>{{job?.categoryName}}</p>
+			</div>
+
+			<div class="single-page-section">
+				<h3 class="margin-bottom-25">Job Description</h3>
+				<p>{{job?.description}}</p>
+			</div>
+			<div class="single-page-section">
+				<h3 class="margin-bottom-25">Job Skills</h3>
+				<li *ngFor="let skill of job?.skills">{{ skill }}</li>
+
+			</div>
+		</div>
+		
+		<!-- Sidebar -->
+		<div class="col-xl-4 col-lg-4">
+			<div class="sidebar-container">
+
+				<a href="#small-dialog" class="apply-now-button popup-with-zoom-anim">Apply Now <i class="icon-material-outline-arrow-right-alt"></i></a>
+					
+				<!-- Sidebar Widget -->
+				<div class="sidebar-widget">
+					<div class="job-overview">
+						<div class="job-overview-headline">Job Summary</div>
+						<div class="job-overview-inner">
+							<ul>
+								<li>
+									<i class="icon-material-outline-location-on"></i>
+									<span>Location</span>
+									<h5>London, United Kingdom</h5>
+								</li>
+								<li>
+									<i class="icon-material-outline-business-center"></i>
+									<span>Job Type</span>
+									<h5>Full Time</h5>
+								</li>
+								<li>
+									<i class="icon-material-outline-local-atm"></i>
+									<span>Salary</span>
+									<h5>$35k - $38k</h5>
+								</li>
+								<li>
+									<i class="icon-material-outline-access-time"></i>
+									<span>Date Posted</span>
+									<h5>2 days ago</h5>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

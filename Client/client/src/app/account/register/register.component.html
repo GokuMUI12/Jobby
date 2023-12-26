@@ -1,0 +1,91 @@
+<div class="margin-top-70"></div>
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Register</h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+	<div class="row">
+		<div class="col-xl-5 offset-xl-3">
+
+			<div class="login-register-page">
+				<!-- Welcome Text -->
+				<div class="welcome-text">
+					<h3 style="font-size: 26px;">Let's create your account!</h3>
+					<span>Already have an account? <a  [routerLink]="'/account/login'">Log In!</a></span>
+				</div>
+				<div *ngIf="showError" class="alert alert-danger" role="alert">
+					<span [innerHTML]="errorMessage" class="error-message"></span>
+				</div>
+				<!-- Form -->
+				<form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
+					<div class="account-type">
+					  <div>
+						<input type="radio" name="account-type-radio" id="freelancer-radio" class="account-type-radio" value="Freelancer" formControlName="role"  />
+						<label for="freelancer-radio" class="ripple-effect-dark"><i class="icon-material-outline-account-circle"></i> Freelancer</label>
+					  </div>
+				  
+					  <div>
+						<input type="radio" name="account-type-radio" id="employer-radio" class="account-type-radio" value="Employer" formControlName="role" />
+						<label for="employer-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Employer</label>
+					  </div>
+					</div>
+					<div *ngIf="registerForm.get('role')?.errors?.['required']" class="error-message">
+						Please choose at least one role.
+					  </div>					
+				  
+					<div class="input-with-icon-left">
+					  <i class="icon-material-baseline-mail-outline"></i>
+					  <input type="text" class="input-text with-border" name="emailaddress-register" formControlName="email" placeholder="Email Address" required />
+					  <em *ngIf="validateControl('email') && hasError('email', 'email')" class="error-message">Please provide a valid email</em>
+					  <em *ngIf="validateControl('email') && hasError('email', 'required')" class="error-message">Email is required</em>
+					</div>
+				  
+					<div class="input-with-icon-left">
+					  <i class="icon-material-outline-account-circle"></i>
+					  <input type="text" class="input-text with-border " name="emailaddress-register" formControlName="firstName" placeholder="First Name" required />
+					  <em *ngIf="validateControl('firstName') && hasError('firstName', 'required')" class="error-message">First Name is required</em>
+					</div>
+				  
+					<div class="input-with-icon-left">
+					  <i class="icon-material-outline-account-circle"></i>
+					  <input type="text" class="input-text with-border" name="emailaddress-register" formControlName="lastName" placeholder="Last Name" required />
+					  <em *ngIf="validateControl('lastName') && hasError('lastName', 'required')" class="error-message">Last Name is required</em>
+					</div>
+				  
+					<div class="input-with-icon-left" title="Should be at least 8 characters long" data-tippy-placement="bottom">
+					  <i class="icon-material-outline-lock"></i>
+					  <input type="password" class="input-text with-border" name="password-register" formControlName="password" placeholder="Password" required />
+					  <em *ngIf="validateControl('password') && hasError('password', 'required')" class="error-message">Password is required</em>
+					</div>
+				  
+					<div class="input-with-icon-left">
+					  <i class="icon-material-outline-lock"></i>
+					  <input type="password" class="input-text with-border" name="password-repeat-register" formControlName="confirm" placeholder="Repeat Password" required />
+						<em *ngIf="validateControl('confirm') && hasError('confirm', 'required')" class="error-message">Confirmation is required</em>
+						<em *ngIf="hasError('confirm', 'mustMatch')" class="error-message">Passwords must match</em>
+					</div>				  
+					<button class="button full-width button-sliding-icon ripple-effect margin-top-10" [disabled]="!registerForm.valid" type="submit">Register <i class="icon-material-outline-arrow-right-alt"></i></button>
+				  </form>
+				  
+				
+				<!-- Social Login -->
+				<div class="social-login-separator"><span>or</span></div>
+				<div class="social-login-buttons">
+					<button class="facebook-login ripple-effect"><i class="icon-brand-facebook-f"></i> Register via Facebook</button>
+					<button class="google-login ripple-effect"><i class="icon-brand-google-plus-g"></i> Register via Google+</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="margin-bottom-70"></div>

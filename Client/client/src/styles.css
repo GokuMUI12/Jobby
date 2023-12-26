@@ -1,0 +1,8 @@
+/* Import Bootstrap CSS in your project's styles.css or styles.scss */
+@import URL('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import 'ngx-toastr/toastr';
+
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
