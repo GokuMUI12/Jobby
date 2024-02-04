@@ -50,7 +50,6 @@ export class ProjectComponent implements OnInit {
   getCategories() {
     this.jobService.getJobCategories().subscribe(categories => {
       this.jobCategories = categories.result
-      // console.log(this.jobCategories)
     })
   }
 }

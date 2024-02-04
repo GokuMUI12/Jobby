@@ -16,6 +16,10 @@ namespace Core.Configurations
                 .ReverseMap();
             CreateMap<RegistrationDto, AppUser>()
                    .ForMember(u => u.UserName, opt => opt.MapFrom(x => x.Email));
+            CreateMap<Offer, OfferToCreateDto>().ReverseMap();
+            CreateMap<Offer, OfferToReturnDto>().
+                ForMember(dest => dest.Days, o => o.MapFrom(s => s.ExpectedDaysCompletion))
+                .ReverseMap();
         }
     }
 }

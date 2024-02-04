@@ -24,11 +24,11 @@
         public int ExpectedDays { get; set; }
         public int Budget { get; set; }
         public Category Category { get; set; }
-        public int CategoryId { get; set; }
+        public int CategoryId { get; set; } 
         public DateTime Created { get; set; }
         public List<JobSkills> Skills { get; set; } = new();
+        public List<Offer> Offers { get; set; } = new();
         public string Email { get; set; }
 
     }
-
 }

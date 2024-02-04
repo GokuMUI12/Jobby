@@ -8,6 +8,7 @@ namespace Core.Specification
         {
             AddInclude(x => x.Skills);
             AddInclude(x => x.Category);
+
         }
         public JobWithSkillsSpecification(string email) : base(x => x.Email == email)
         {

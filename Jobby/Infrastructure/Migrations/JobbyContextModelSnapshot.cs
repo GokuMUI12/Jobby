@@ -189,6 +189,37 @@ namespace Infrastructure.Migrations
                     b.ToTable("JobSkills");
                 });
 
+            modelBuilder.Entity("Core.Entities.Offer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ExpectedDaysCompletion")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobId");
+
+                    b.ToTable("Offers");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -213,22 +244,6 @@ namespace Infrastructure.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "d7bd289e-1564-46a7-ac32-1cf15e6fee0e",
-                            ConcurrencyStamp = "f157ab3c-40a7-4199-aaba-215b27a65b46",
-                            Name = "Freelancer",
-                            NormalizedName = "Freelancer"
-                        },
-                        new
-                        {
-                            Id = "fa23c523-03ab-41a1-b094-eb32c9ab031e",
-                            ConcurrencyStamp = "52abd092-04c1-4e51-a07d-3d520504ee10",
-                            Name = "Employer",
-                            NormalizedName = "Employer"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -351,6 +366,17 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("JobId");
                 });
 
+            modelBuilder.Entity("Core.Entities.Offer", b =>
+                {
+                    b.HasOne("Core.Entities.Job", "Job")
+                        .WithMany("Offers")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Job");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -404,6 +430,8 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Core.Entities.Job", b =>
                 {
+                    b.Navigation("Offers");
+
                     b.Navigation("Skills");
                 });
 #pragma warning restore 612, 618

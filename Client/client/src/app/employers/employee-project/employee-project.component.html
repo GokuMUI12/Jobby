@@ -26,11 +26,11 @@
                     <h3><i class="icon-material-outline-business-center"></i> My Job Listings</h3>
                 </div>
 
-                <div class="content">
+                <div class="content"  *ngFor="let job of jobs">
                     <ul class="dashboard-box-list">
                         <li>
                             <!-- Job Listing -->
-                            <div *ngFor="let job of jobs" class="job-listing">
+                            <div class="job-listing">
 
                                 <!-- Job Listing Details -->
                                 <div class="job-listing-details">
@@ -39,11 +39,9 @@
 <!-- 											<a href="#" class="job-listing-company-logo">
                                         <img src="images/company-logo-05.png" alt="">
                                     </a> -->
-
                                     <!-- Details -->
                                     <div class="job-listing-description">
                                         <h3 class="job-listing-title"><a routerLink="/job/{{job.id}}">{{job.title }}</a> </h3>
-
                                         <!-- Job Listing Footer -->
                                         <div class="job-listing-footer">
                                             <ul>
@@ -52,24 +50,24 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
-
-                            <!-- Buttons -->
                             <div class="buttons-to-right always-visible">
-                                <a href="dashboard-manage-candidates.html" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Manage Candidates <span class="button-info">0</span></a>
+                                <a [routerLink]="['/offer/bids', job.id]" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Manage Candidates <span class="button-info">0</span></a>
                                 <a href="#" class="button gray ripple-effect ico" data-tippy-placement="top" data-tippy="" data-original-title="Edit"><i class="icon-feather-edit"></i></a>
                                 <a href="#" class="button gray ripple-effect ico" data-tippy-placement="top" data-tippy="" data-original-title="Remove"><i class="icon-feather-trash-2"></i></a>
                             </div>
+                            
+                            <!-- Buttons -->
+
                         </li>
 
                     </ul>
                 </div>
             </div>
         </div>
-
     </div>
     <!-- Row / End -->
-
     <!-- Footer -->
     <div class="dashboard-footer-spacer" style="padding-top: 160.6px;"></div>
     <div class="small-footer margin-top-15">
@@ -101,5 +99,4 @@
         <div class="clearfix"></div>
     </div>
     <!-- Footer / End -->
-
 </div>

@@ -19,7 +19,6 @@ namespace Infrastructure.Data
         {
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new CategoriesConfiguration());
-            builder.ApplyConfiguration(new RoleConfiguration());
             if (Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
             {
                 foreach (var entityType in builder.Model.GetEntityTypes())
@@ -33,7 +32,8 @@ namespace Infrastructure.Data
                 }
             }
         }
-        public DbSet<Job> Jobs { get; set; } 
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<Offer> Offers { get; set; }
         public DbSet<Category> Categories { get; set; } 
     }
 }

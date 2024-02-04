@@ -9,5 +9,6 @@ namespace Core.Interfaces
         Task<AuthResponseDto> Login(LoginDto login);
         Task<IList<AppUser>> GetAllEmployers();
         Task<IList<AppUser>> GetAllFreelancers();
+        Task<AppUser> GetUserById(string id);
     }
 }

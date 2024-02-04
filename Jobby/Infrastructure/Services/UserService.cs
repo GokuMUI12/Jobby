@@ -12,7 +12,6 @@ namespace Infrastructure.Services
         private readonly UserManager<AppUser> _userManager;
         private readonly TokenService _tokenService;
         private readonly IMapper _mapper;
-        //private readonly RoleManager _roleManager;
         private const string EmployerRole = "Employer";
         private const string Freelancer = "Freelancer";
 
@@ -74,6 +73,12 @@ namespace Infrastructure.Services
                 throw new ArgumentNullException(nameof(users));
             }
             return users;
+        }
+
+        public Task<AppUser> GetUserById(string id)
+        {
+            var user = _userManager.FindByIdAsync(id);
+            return user ?? null;
         }
     }
 }

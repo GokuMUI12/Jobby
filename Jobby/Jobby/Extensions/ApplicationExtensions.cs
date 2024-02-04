@@ -17,10 +17,11 @@ namespace Jobby.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services,
            IConfiguration config)
         {
-           services.AddDbContext<JobbyContext>(options =>
+            services.AddDbContext<JobbyContext>(options =>
                 options.UseSqlite(config.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IJobService, JobService>();
+            services.AddScoped<IOfferService, OfferService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<TokenService>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
