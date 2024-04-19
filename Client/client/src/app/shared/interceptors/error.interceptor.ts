@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
       catchError((error: HttpErrorResponse) => {
         let errorMessage = this.handleError(error);
         return throwError(() => new Error(errorMessage));
+        console.log(errorMessage)
       })
     )
   }

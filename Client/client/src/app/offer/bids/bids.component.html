@@ -18,8 +18,8 @@
                 </div>
 
               
-						<div class="content">
-							<ul class="dashboard-box-list" *ngFor="let offer of offers">
+						<div class="content" *ngFor="let offer of offers">
+							<ul class="dashboard-box-list" >
 								<li>
 									<!-- Job Listing -->
 									<div class="job-listing">
@@ -34,7 +34,7 @@
 
 											<!-- Details -->
 											<div class="job-listing-description">
-												<h3 class="job-listing-title"><a href="#">Frontend React Developer</a></h3>
+												<h3 class="job-listing-title">{{offer.email}}</h3>
 											</div>
                                             <ul class="dashboard-task-info bid-info mx-auto">
                                                 <li><strong>{{offer.amount}}</strong><span>Bid Amount</span></li>
@@ -46,7 +46,7 @@
 
 									<!-- Buttons -->
 									<div class="buttons-to-right always-visible">
-										<a href="#small-dialog-1"  class="popup-with-zoom-anim button ripple-effect"><i class="icon-material-outline-check"></i> Accept Offer</a>
+										<a href="#small-dialog-1"  class="popup-with-zoom-anim button ripple-effect"><i class="icon-material-outline-check"></i>Accept Offer</a>
 										<a href="#small-dialog-2" class="popup-with-zoom-anim button dark ripple-effect"><i class="icon-feather-mail"></i> Send Message</a>									
 									</div>
 								</li>

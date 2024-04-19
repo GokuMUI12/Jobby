@@ -13,7 +13,7 @@ export class JobService {
   baseUrl = environment.apiUrl;
 
   getJobCategories(): Observable<any> {
-    return this.http.get<JobCategory[]>(this.baseUrl + 'job/get-job-categories')
+    return this.http.get<any[]>(this.baseUrl + 'job/get-job-categories')
   }
 
   getJobsForUser() : Observable<any[]>{
@@ -27,4 +27,9 @@ export class JobService {
   getJobById(id: number){
     return this.http.get<any>(this.baseUrl + 'job/get-job-by-id?id=' + id)
   }
+
+  getJobs(){
+    return this.http.get<any>(this.baseUrl + 'job/jobs')
+  }  
+
 }

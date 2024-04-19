@@ -22,20 +22,30 @@ namespace Jobby.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
         [HttpPost("make-offer")]
-        public ActionResult<OfferToReturnDto> CreateOfferAsync(OfferToCreateDto dto)
+        public async Task<ActionResult<OfferToReturnDto>> CreateOfferAsync(OfferToCreateDto dto)
         {
             var email = _httpContextAccessor.HttpContext?.User.RetrieveEmailFromPrincipal();
-            var offer = _offerService.CreateOfferAsync(email, dto.JobId, dto.Message, dto.Amount, dto.DaysExpected);
+            var offer = await _offerService.CreateOfferAsync(email, dto.JobId, dto.Message, dto.Amount, dto.DaysExpected);
             if (offer == null) return BadRequest(new ApiResponse(400, "Problem Creating Your Offer"));
             return Ok(offer);
         }
 
         [HttpGet("get-offers")]
-        public ActionResult<IReadOnlyList<OfferToReturnDto>> GetOffersForAJob(int jobId)
+        public async Task<ActionResult<IReadOnlyList<OfferToReturnDto>>> GetOffersForAJob(int jobId)
         {
-            var offers = _offerService.GetOffersForAJobAsync(jobId);
+            var offers = await _offerService.GetOffersForAJobAsync(jobId);
             if (offers == null) return NotFound();
             return Ok(offers);
+        }
+
+
+        [HttpPost("accept-offer")]
+        public async Task<IActionResult> AcceptOffer(int offerId)
+        {
+            var isAccepted = await _offerService.AcceptOffer(offerId);
+            if(!isAccepted) return NotFound();
+            return Ok();
+            
         }
     }
 }

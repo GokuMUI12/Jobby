@@ -17,5 +17,6 @@ import { BidsComponent } from './bids/bids.component';
     ReactiveFormsModule,
     OfferRoutingModule
   ]
+
 })
 export class OfferModule { }

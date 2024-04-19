@@ -31,6 +31,12 @@ namespace Infrastructure.Services
             var category = await _unitOfWork.Repository<Category>().GetByIdAsync(categoryId);
             return _mapper.Map<JobToReturnDto>(job);
         }
+
+        public async Task<IReadOnlyList<Category>> GetCategories()
+        {
+             return await _unitOfWork.Repository<Category>().ListAllAsync();
+        }
+
         public async Task<JobToReturnDto> GetJobByIdAsync(int jobId)
         {
             var spec = new JobWithSkillsSpecification(jobId);
@@ -48,6 +54,13 @@ namespace Infrastructure.Services
         public async Task<IReadOnlyList<JobToReturnDto>> GetJobsForUserAsync(string email)
         {
             var spec = new JobWithSkillsSpecification(email);
+            var jobs = await _unitOfWork.Repository<Job>().ListAsync(spec);
+            return _mapper.Map<IReadOnlyList<JobToReturnDto>>(jobs);
+        }
+
+        public async Task<IReadOnlyList<JobToReturnDto>> GetAllJobs()
+        {
+            var spec = new JobWithSkillsSpecification();
             var jobs = await _unitOfWork.Repository<Job>().ListAsync(spec);
             return _mapper.Map<IReadOnlyList<JobToReturnDto>>(jobs);
         }

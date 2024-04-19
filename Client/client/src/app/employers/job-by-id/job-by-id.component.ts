@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./job-by-id.component.css']
 })
 export class JobByIdComponent implements OnInit {
-  job?: any
+  job: any
   constructor(public jobService: JobService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {

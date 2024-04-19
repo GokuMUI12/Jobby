@@ -8,22 +8,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./bids.component.css']
 })
 export class BidsComponent implements OnInit {
-  offers : any
+    offers: any
+ 
   constructor(public offerService: OfferService, public route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getBids()
+
   }
-
   getBids() {
-    debugger;
-    let jobId = this.route.snapshot.paramMap.get('id')
-    if (jobId){
-      
+    let jobId = this.route.snapshot.paramMap.get('id');
+    if (jobId) {
       this.offerService.getJobOffers(+jobId).subscribe({
-        next: offers => this.offers = offers
-     })
+        next: offers => {
+          this.offers = offers;
+          console.log(this.offers);    
+        },
+        error: err => {
+          console.error(err);
+        }
+      });
     }
-
   }
 }

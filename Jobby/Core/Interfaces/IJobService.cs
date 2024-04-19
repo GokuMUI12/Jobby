@@ -9,5 +9,8 @@ namespace Core.Interfaces
         Task<JobToReturnDto> GetJobByIdAsync(int jobId);
         Task<JobToReturnDto> GetJobByIdForUser(int id,string email);
         Task<IReadOnlyList<JobToReturnDto>> GetJobsForUserAsync(string email);
+        Task<IReadOnlyList<Category>> GetCategories();
+        Task<IReadOnlyList<JobToReturnDto>> GetAllJobs();
+        
     }
 }

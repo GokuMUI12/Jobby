@@ -53,7 +53,7 @@
                                 
                             </div>
                             <div class="buttons-to-right always-visible">
-                                <a [routerLink]="['/offer/bids', job.id]" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Manage Candidates <span class="button-info">0</span></a>
+                                <a [routerLink]="['/offer/bids', job.id]" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Manage Candidates <span class="button-info">{{job.count}}</span></a>
                                 <a href="#" class="button gray ripple-effect ico" data-tippy-placement="top" data-tippy="" data-original-title="Edit"><i class="icon-feather-edit"></i></a>
                                 <a href="#" class="button gray ripple-effect ico" data-tippy-placement="top" data-tippy="" data-original-title="Remove"><i class="icon-feather-trash-2"></i></a>
                             </div>

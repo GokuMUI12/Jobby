@@ -2,11 +2,6 @@
 using Infrastructure.Data.SeedData;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Data
 {
@@ -31,9 +26,12 @@ namespace Infrastructure.Data
                     }
                 }
             }
+            builder.Entity<Job>().HasQueryFilter(j => j.Email != null);
+            builder.Entity<Contract>().HasIndex( c => c.OfferId).IsUnique();
         }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Offer> Offers { get; set; }
         public DbSet<Category> Categories { get; set; } 
+        public DbSet<Contract> Contracts { get; set; }
     }
 }

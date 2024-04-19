@@ -7,6 +7,7 @@ namespace Core.Interfaces
         Task<OfferToReturnDto> CreateOfferAsync(string email, int jobId, string message,
             int offerAmount, int daysToBeExpected );
         Task <IReadOnlyList<OfferToReturnDto>> GetOffersForAJobAsync(int jobId);
+        Task <bool> AcceptOffer(int offerId);
     }
     
 }

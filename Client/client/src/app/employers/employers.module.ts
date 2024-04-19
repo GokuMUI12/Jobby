@@ -6,16 +6,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeeProjectComponent } from './employee-project/employee-project.component';
 import { JobByIdComponent } from './job-by-id/job-by-id.component';
+import { OfferModule } from '../offer/offer.module';
+import { JobsComponent } from './jobs/jobs.component'
+
 
 @NgModule({
   declarations: [  
-    ProjectComponent, EmployeeProjectComponent, JobByIdComponent,
+    ProjectComponent, EmployeeProjectComponent, JobByIdComponent, JobsComponent
   ],
   imports: [
     CommonModule,
     EmployersRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   exports:[
     ProjectComponent,

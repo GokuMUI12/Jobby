@@ -11,5 +11,6 @@
         public string CategoryName { get; set; }
         public DateTime Created { get; set; }
         public List<string> Skills { get; set; }
+        public int Count { get; set; }
     }
 }

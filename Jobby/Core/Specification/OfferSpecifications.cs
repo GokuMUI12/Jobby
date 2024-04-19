@@ -11,7 +11,7 @@ namespace Core.Specification
     {
         public OfferSpecifications(int jobId) : base(x => x.JobId == jobId)
         {
-
+            AddOrderByDescending(x => x.Created);
         }
     }
 }

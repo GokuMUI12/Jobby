@@ -55,30 +55,30 @@ namespace Infrastructure.Services
                 return new RegistrationResponseDto { Errors = errors };
             }
         }
-        public Task<IList<AppUser>> GetAllEmployers()
+        public async Task<IReadOnlyList<UserToReturnDto>> GetAllEmployers()
         {
-            var users = _userManager.GetUsersInRoleAsync(EmployerRole);
+            var users = await _userManager.GetUsersInRoleAsync(EmployerRole);
             if (users == null)
             {
                 throw new ArgumentNullException(nameof(users));
             }
-            return users;
+            return _mapper.Map<IReadOnlyList<UserToReturnDto>>(users);
         }
 
-        public Task<IList<AppUser>> GetAllFreelancers()
+        public async Task<IReadOnlyList<UserToReturnDto>> GetAllFreelancers()
         {
-            var users = _userManager.GetUsersInRoleAsync(Freelancer);
+            var users = await _userManager.GetUsersInRoleAsync(Freelancer);
             if (users == null)
             {
                 throw new ArgumentNullException(nameof(users));
             }
-            return users;
+            return _mapper.Map<IReadOnlyList<UserToReturnDto>>(users);
         }
 
-        public Task<AppUser> GetUserById(string id)
+        public async Task<UserToReturnDto> GetUserById(string id)
         {
-            var user = _userManager.FindByIdAsync(id);
-            return user ?? null;
+            var user = await _userManager.FindByIdAsync(id);
+            return _mapper.Map<UserToReturnDto>(user);
         }
     }
 }

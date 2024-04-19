@@ -7,8 +7,8 @@ namespace Core.Interfaces
     {
         Task<RegistrationResponseDto> RegisterUser(RegistrationDto registration);
         Task<AuthResponseDto> Login(LoginDto login);
-        Task<IList<AppUser>> GetAllEmployers();
-        Task<IList<AppUser>> GetAllFreelancers();
-        Task<AppUser> GetUserById(string id);
+        Task<IReadOnlyList<UserToReturnDto>> GetAllEmployers();
+        Task<IReadOnlyList<UserToReturnDto>> GetAllFreelancers();
+        Task<UserToReturnDto> GetUserById(string id);
     }
 }

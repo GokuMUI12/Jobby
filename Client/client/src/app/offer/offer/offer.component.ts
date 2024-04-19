@@ -20,7 +20,6 @@ export class OfferComponent implements OnInit {
     this.offerForm = new FormGroup({
       amount: new FormControl(0, Validators.required),
       daysExpected: new FormControl(0, Validators.required),
-      //  jobId: new FormControl(this.jobId, Validators.required)
       message: new FormControl('', Validators.required)
     })
   }
@@ -40,7 +39,7 @@ export class OfferComponent implements OnInit {
       this.offerService.addOffer(offer).subscribe({
         next: () => console.log('Offer Successfully Made'),
         error: (err: HttpErrorResponse) => {
-          console.log('Error')
+          console.log('Error', err)
         }
       })
     }

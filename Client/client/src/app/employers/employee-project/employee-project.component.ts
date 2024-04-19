@@ -1,6 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { JobService } from '../job.service';
-import { Job } from 'src/app/shared/models/job';
+import { Subscription } from 'rxjs';
+import { OfferService } from 'src/app/offer/offer.service';
 
 @Component({
   selector: 'app-employee-project',
@@ -8,18 +9,24 @@ import { Job } from 'src/app/shared/models/job';
   styleUrls: ['./employee-project.component.css']
 })
 export class EmployeeProjectComponent implements OnInit {
-
+  constructor(public jobService: JobService, public offerService: OfferService) { }
   jobs: any;
-  jobService = inject(JobService)
+  private countSubscription?: Subscription;
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getJobs();
+
   }
 
   getJobs() {
-      this.jobService.getJobsForUser().subscribe((jobs : any) => {
-            this.jobs = jobs.result;
-      })
+    this.jobService.getJobsForUser().subscribe({
+      next: (jobs: any) => {
+        this.jobs = jobs.result;
+        console.log(jobs);
+      },
+      error: (err: any) => {
+        console.error(err);
+      }
+    });
   }
-
 }

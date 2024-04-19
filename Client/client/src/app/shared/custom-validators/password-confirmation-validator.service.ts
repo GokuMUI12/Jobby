@@ -21,7 +21,6 @@ export class PasswordConfirmationValidatorService {
       if (confirmValue !== passwordValue) {
           return  { mustMatch: true }
       } 
-
       return null;
     };
   }

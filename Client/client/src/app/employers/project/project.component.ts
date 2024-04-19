@@ -12,7 +12,7 @@ import { JobCategory } from 'src/app/shared/models/job';
 
 export class ProjectComponent implements OnInit {
   jobForm!: FormGroup
-  jobCategories: JobCategory[] = [];
+  jobCategories: any[] = [];
   @ViewChild('skillInput') someInput!: ElementRef;
   constructor(private fb: FormBuilder, private jobService: JobService, private router: Router) { }
 
@@ -48,8 +48,9 @@ export class ProjectComponent implements OnInit {
   }
 
   getCategories() {
-    this.jobService.getJobCategories().subscribe(categories => {
-      this.jobCategories = categories.result
+      this.jobService.getJobCategories().subscribe(categories => {
+      console.log(categories);
+      this.jobCategories = categories
     })
   }
 }
